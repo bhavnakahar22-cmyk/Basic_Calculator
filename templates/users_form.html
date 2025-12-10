@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Entry Form</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input { padding: 8px; width: 250px; margin-bottom: 10px; }
+        button { padding: 8px 20px; background: blue; color: white; border: none; }
+        table { border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px 15px; }
+    </style>
+</head>
+<body>
+
+    <h2>Enter User Details</h2>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required><br>
+        <input type="email" name="email" placeholder="Enter Email" required><br>
+        <button type="submit">Save</button>
+    </form>
+
+    <h3>Users List</h3>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+
+        {% for u in users %}
+        <tr>
+            <td>{{ u.ID }}</td>
+            <td>{{ u.Name }}</td>
+            <td>{{ u.Email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
