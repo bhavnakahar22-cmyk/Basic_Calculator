@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Calculator</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        function addToDisplay(value) {
+            const display = document.getElementById("display");
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+    </script>
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white w-full max-w-sm p-6 rounded-2xl shadow-lg">
+
+        <h2 class="text-2xl font-bold text-gray-700 text-center mb-4">
+            Calculator
+        </h2>
+
+        <!-- Calculator Form -->
+        <form method="post" class="space-y-4">
+
+            <!-- Display -->
+            <input 
+                id="display"
+                name="expression"
+                value="{{ result if result is not none else '' }}"
+                readonly
+                class="w-full text-right text-3xl p-4 border rounded-xl bg-gray-100"
+            >
+
+            <!-- Buttons Grid -->
+            <div class="grid grid-cols-4 gap-3 text-lg font-semibold">
+
+                <button type="button" onclick="clearDisplay()" class="p-4 bg-red-400 text-white rounded-xl">C</button>
+                <button type="button" onclick="addToDisplay('/')" class="p-4 bg-blue-300 rounded-xl">/</button>
+                <button type="button" onclick="addToDisplay('*')" class="p-4 bg-blue-300 rounded-xl">*</button>
+                <button type="button" onclick="addToDisplay('-')" class="p-4 bg-blue-300 rounded-xl">-</button>
+
+                <button type="button" onclick="addToDisplay('7')" class="p-4 bg-gray-200 rounded-xl">7</button>
+                <button type="button" onclick="addToDisplay('8')" class="p-4 bg-gray-200 rounded-xl">8</button>
+                <button type="button" onclick="addToDisplay('9')" class="p-4 bg-gray-200 rounded-xl">9</button>
+                <button type="button" onclick="addToDisplay('+')" class="p-4 bg-blue-300 rounded-xl">+</button>
+
+                <button type="button" onclick="addToDisplay('4')" class="p-4 bg-gray-200 rounded-xl">4</button>
+                <button type="button" onclick="addToDisplay('5')" class="p-4 bg-gray-200 rounded-xl">5</button>
+                <button type="button" onclick="addToDisplay('6')" class="p-4 bg-gray-200 rounded-xl">6</button>
+
+                <!-- = Button -->
+                <button type="submit" class="row-span-2 p-4 bg-green-500 text-white rounded-xl text-xl">=</button>
+
+                <button type="button" onclick="addToDisplay('1')" class="p-4 bg-gray-200 rounded-xl">1</button>
+                <button type="button" onclick="addToDisplay('2')" class="p-4 bg-gray-200 rounded-xl">2</button>
+                <button type="button" onclick="addToDisplay('3')" class="p-4 bg-gray-200 rounded-xl">3</button>
+
+                <button type="button" onclick="addToDisplay('0')" class="col-span-2 p-4 bg-gray-200 rounded-xl">0</button>
+                <button type="button" onclick="addToDisplay('.')" class="p-4 bg-gray-200 rounded-xl">.</button>
+            </div>
+
+            {% if error %}
+            <p class="text-center text-red-600 font-semibold mt-2">{{ error }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>
