@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Production Dashboard Flow</title>
+
+  <!-- Mermaid Library -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+
+<body>
+  <h2>Production Dashboard – Data Flow</h2>
+
+  <div class="mermaid">
+    flowchart TD
+        A[Start] --> B[Load Production Data]
+        B --> C[Apply Filters]
+        C --> C1[Process: Filing / Polishing]
+        C --> C2[Factory: F1–F9]
+
+        C --> D[Calculate KPIs]
+        D --> D1[Employee Count]
+        D --> D2[Total Hours]
+        D --> D3[Target PCS]
+        D --> D4[Actual Production PCS]
+
+        D --> E[Employees by Factory]
+
+        E --> F[Calculate Capacity]
+        F --> F1[Actual Capacity PCS]
+        F --> F2[Actual Capacity PTS]
+
+        F --> G[Compare Metrics]
+        G --> G1[Capacity vs Target]
+        G --> G2[Target vs Actual]
+
+        G --> H[Visualize Dashboard]
+        H --> H1[KPI Tiles]
+        H --> H2[Bar Chart]
+        H --> H3[Combo Chart]
+        H --> H4[Summary Table]
+
+        H --> I[Performance Status]
+        I --> I1[Green = Achieved]
+        I --> I2[Red = Gap]
+
+        I --> J[End]
+  </div>
+
+</body>
+</html>
